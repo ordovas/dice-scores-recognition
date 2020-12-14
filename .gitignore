@@ -1,6 +1,9 @@
 own_dataset/
 *.h5
-
+data/
+dataset/
+kaggle_dataset/
+*.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

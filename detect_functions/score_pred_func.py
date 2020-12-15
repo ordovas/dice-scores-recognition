@@ -26,25 +26,25 @@ from tensorflow.keras.models import model_from_json
 
 #Select different dices
 
-json_file = open('../models/model_difdices_final.json', 'r')
+json_file = open('models/model_difdices_final.json', 'r')
 loaded_model_json = json_file.read()
 loaded_model = model_from_json(loaded_model_json)
 
-loaded_model.load_weights("../models/model_difdices_final.h5")
+loaded_model.load_weights("models/model_difdices_final.h5")
 
 # Predict dices score
 
-json_file = open('../models/model_1d6_zoom.json', 'r')
+json_file = open('models/model_1d6_zoom.json', 'r')
 loaded_model_json = json_file.read()
 loaded_model_blue = model_from_json(loaded_model_json)
 
-loaded_model_blue.load_weights("../models/model_1d6_zoom.h5")
+loaded_model_blue.load_weights("models/model_1d6_zoom.h5")
 
-json_file = open('../models/model_2d6_zoom.json', 'r')
+json_file = open('models/model_2d6_zoom.json', 'r')
 loaded_model_json = json_file.read()
 loaded_model_red = model_from_json(loaded_model_json)
 
-loaded_model_red.load_weights("../models/model_2d6_zoom.h5")
+loaded_model_red.load_weights("models/model_2d6_zoom.h5")
 
 d6_labels=[5, 1, 4, 3, 6, 2]
 d10_labels=[8, 5, 1, 7, 4, 0, 3, 6, 2, 9]
@@ -62,7 +62,7 @@ def get_score(die,model):
     # 1d6 dice labels, in the order that TF ordered it
     labels=[5, 1, 4, 3, 6, 2]
     resized= cv2.resize(die, (100,100), interpolation = cv2.INTER_AREA)
-    print(model.predict( np.array( [resized,] )))
+    #print(model.predict( np.array( [resized,] )))
     score = labels[model.predict_classes( np.array( [resized,] )  )[0]]
     return score
 
@@ -72,9 +72,9 @@ def predict_dice_score(die,model=loaded_model
                        ,model_blue=loaded_model_blue):
     dt=pred_dice_type(die,model)
     if dt==0:
-        color="red"
+        color="Red"
         score=get_score(die,model_red)
     else:
-        color="blue"
+        color="Blue"
         score=get_score(die,model_blue)
     return score,color

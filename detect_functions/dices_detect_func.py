@@ -33,14 +33,14 @@ def detect_dices(img):
                                               flags=cv2.CASCADE_SCALE_IMAGE)
     
     #print(f"HaarCascadeClassifier:--- Detected {len(dices)} dices")
-    img_detected=img
+    img_detected=img.copy()
     for (x, y, w, h) in dices:
         # Draw rectangle around dices in green
-        cv2.rectangle(img_detected, (x, y), (x+w, y+h), (0, 255, 0), 3)
+        cv2.rectangle(img_detected, (x, y), (x+w, y+h), (0, 255, 0), 5)
     return dices,img_detected
 
-# Returns a list whose elements are the croped images with each dice
 
+# Returns the image of a certain dice
 def obtain_dice(image,region):
     x, y, w, h = region
     die = image[y:y+h,x:x+w,:]
@@ -50,7 +50,7 @@ def obtain_dice(image,region):
      
     return die2
 
-
+# Returns a list whose elements are the croped images with each dice
 def segment_dices(image,regions):
     slices=[]
     

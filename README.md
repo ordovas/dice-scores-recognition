@@ -1,6 +1,6 @@
 # Dice Scores Recognition in image/video
 
-Image recognition is a hot topic with multiple applications. In this final project I used modern teqnniques to extract the number resulted from a dice throw in an image or a video.
+Image recognition is a hot topic with multiple applications. In this final project I used modern techniques to extract the number resulted from a dice throw in an image or a video.
 
 To conduct this project I conducted the following steps:
 
@@ -12,6 +12,8 @@ To conduct this project I conducted the following steps:
 
 - Adapted the code to work with images or live video using a webcam.
 
+In the [main_project.ipynb](main_project.ipynb) jupyter notebook with the necessary line codes to execute this project. Due to the file sizes, neither the dataset nor the models were uploaded to GitHub.
+
 
 ## Dataset creation
 
@@ -20,12 +22,12 @@ In order to create a dataset to train a CNN, I recorded videos of each number in
 
 ## Image segmentation
 
-Using these fotograms, I trained a *Haar Cascade Classifier* with *OpenCV* and the *Cascade Trainer GUI* in order to be able to recognice the dices, following [this video tutorial](https://www.youtube.com/watch?v=v_cwOq06g9E) by [OMNES](https://github.com/GabySol/OmesTutorials2020). I recorded some background frames as well to provide to the Cascade Classifier positive and negative images. This provided a good detection of the dices as seen in the picture
+Using these fotograms, I trained a *Haar Cascade Classifier* with *OpenCV* and the *Cascade Trainer GUI* in order to be able to recognize the dices, following [this video tutorial](https://www.youtube.com/watch?v=v_cwOq06g9E) by [OMNES](https://github.com/GabySol/OmesTutorials2020). I recorded some background frames as well to provide to the Cascade Classifier positive and negative images. This provided a good detection of the dices as seen in the picture
 
 
 ![Img segmentation](readme_images/dices_detected.png)
 
-With these image segmentation thecnique, I conducted one last preporoccesing to the image dataset. I selected better the region of the dice to extract more centered and focused images of the dices before training the CNN.
+With these image segmentation techniques, I conducted one last preprocessing to the image dataset. I selected better the region of the dice to extract more centered and focused images of the dices before training the CNN.
 
 ## CNN modeling
 
@@ -73,17 +75,16 @@ I used this schema to fit the D6 and D10 dices.
 After that we have prepared all the tools necessary to build this project. I used photos of dices in different positions as seen in the image from the "Image Segmentation" section to predict the scores of several dice throws.
 
 - The D6 dices are almost generally predicted, except for maybe blurry images or with some shiny spots in dices that make the algorithm confused
-- The D10 dices are more problemaric due to the particular shape, but even so, a fraction much higher than the random 10% is guessed. In particular, some dices that are seen with some angle are missclasified.
+- The D10 dices are more problematic due to the particular shape, but even so, a fraction much higher than the random 10% is guessed. In particular, some dices that are seen with some angle are misclassified.
 
 Finally I could connect the webcam with the python code, so I can test my approach in real time using *OpenCV*. Each frame is processed by the Cascade Classifier and the CNN is applied to each detected dice region.
 
 ![Img segmentation](readme_images/screenshot.png)
 
 
-## Final thougts
+## Final thoughts
 
-I used *homemade* methods to create the sample and to process the images and videos. Even so, and taking into account that this was done in one week, the CNN and OpenCV are able to perform high quality detection and classification of objects. This kind of works have a great potential in a wide range of fields.
-
+I used *homemade* methods to create the sample and to process the images and videos. Even so, and taking into account that this was done in one week, the CNN and OpenCV are able to perform high quality detection and classification of objects. These kinds of works have a great potential in a wide range of fields.
 
 
 

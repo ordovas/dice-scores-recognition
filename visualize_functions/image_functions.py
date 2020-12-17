@@ -60,7 +60,7 @@ def plot_dices_d10(dices):
     for dice in dices:
         i+=1
         score, dice_color, dice_type = predict_dice10_score(dice)
-        plt.subplot(b, a, i)
+        plt.subplot(max(b,2), a, i)
         plt.imshow(dice)
         plt.title(f"{dice_color.capitalize()} {dice_type} score = {score}")
 

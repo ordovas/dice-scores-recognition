@@ -1,10 +1,8 @@
 # Dice Scores Recognition in image/video
 
-Image recognition is a hot topic with multiple applications. In this final project I used modern techniques to extract the number resulted from a dice throw in an image or a video.
+Image recognition is a hot topic with multiple applications. In this final project I used modern techniques to extract the numbers resulted from dice throws in an image or a video. For this work I conducted the following steps:
 
-To conduct this project I conducted the following steps:
-
-- Build the train dataset using my camera to obtain multiple images.
+- Built the train dataset using my camera to obtain multiple images.
 
 - Segment images to extract the region of the dices.
 
@@ -33,8 +31,8 @@ With these image segmentation techniques, I conducted one last preprocessing to 
 
 The initial dataset is augmented using *Keras*' `ImageDataGenerator` to take into account different angles of the dice, shifts with respect to the center of the square and changes in light.
 
-![Img segmentation](readme_images/newdataset.png)
-![Img segmentation](readme_images/newdataset2.png)
+![Img augm 1](readme_images/newdataset.png)
+![Img augm 2](readme_images/newdataset2.png)
 
 I used *TensorFlow* in order to create and fit a CNN with the following parameters:
 
@@ -61,25 +59,24 @@ max_pooling2d_3 (MaxPooling2 (None, 6, 6, 256)         0
 _________________________________________________________________
 flatten (Flatten)            (None, 9216)              0         
 _________________________________________________________________
-dense (Dense)                (None, 10)                92170     
+dense (Dense)                (None, ***Number of dice faces***)         
 =================================================================
-Total params: 480,586
-Trainable params: 480,586
-Non-trainable params: 0
 ```
 
 I used this schema to fit the D6 and D10 dices.
 
-## Score recognition in images and video
+## Score recognition in images and live video
 
 After that we have prepared all the tools necessary to build this project. I used photos of dices in different positions as seen in the image from the "Image Segmentation" section to predict the scores of several dice throws.
 
 - The D6 dices are almost generally predicted, except for maybe blurry images or with some shiny spots in dices that make the algorithm confused
 - The D10 dices are more problematic due to the particular shape, but even so, a fraction much higher than the random 10% is guessed. In particular, some dices that are seen with some angle are misclassified.
 
+![Image detection](readme_images/score.png)
+
 Finally I could connect the webcam with the python code, so I can test my approach in real time using *OpenCV*. Each frame is processed by the Cascade Classifier and the CNN is applied to each detected dice region.
 
-![Img segmentation](readme_images/screenshot.png)
+![Video detection](readme_images/screenshot.png)
 
 
 ## Final thoughts

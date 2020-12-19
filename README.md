@@ -76,7 +76,7 @@ After that we have prepared all the tools necessary to build this project. I use
 
 Finally I could connect the webcam with the python code, so I can test my approach in real time using *OpenCV*. Each frame is processed by the Cascade Classifier and the CNN is applied to each detected dice region.
 
-![Video detection](readme_images/screenshot.png)
+![Video detection](readme_images/gifdice.gif)
 
 
 ## Final thoughts
